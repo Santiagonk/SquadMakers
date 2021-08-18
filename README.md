@@ -46,7 +46,6 @@ _Estas instrucciones te permitirán obtener una copia del proyecto en funcionami
 
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
 
 ### Link de despliegue:
 
