@@ -54,7 +54,7 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 ### Documentacion API
 
-* [Documentación en Postman](https://web.postman.co/workspace/My-Workspace~21065134-1b3f-4786-81bd-471da866a0e7/documentation/15367532-0a0a1b82-bb24-4132-8e9f-477d1bc54d29)
+* [Documentación en Postman](https://documenter.getpostman.com/view/15367532/TzzANHKk)
 
 ### Construido con 🛠️
 
