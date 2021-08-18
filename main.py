@@ -1,10 +1,8 @@
+from app.jokes.jokes import jokesRandom, jokesResponse, jokesSelect
 from flask import Flask
-from flask_restful import Resource, Api
-import json
-import requests
-import random
 
 from app import create_app
+from app.jokes import *
 
 app = create_app()
 
@@ -15,35 +13,11 @@ def main():
 
 @app.route("/jokes", methods=['GET'])
 def Jokes():
-    dad_url = "https://icanhazdadjoke.com/slack"
-    chuck_url = "https://api.chucknorris.io/jokes/random"
-    url = random.choice([dad_url, chuck_url])
-    r = requests.get(url)
-    r = r.json()
-
-    if url == dad_url:
-        return r["attachments"][0]["text"]
-    else:
-        return r["value"]
+    url = jokesRandom()
+    return jokesResponse(url)
 
 
 @app.route("/jokes/<name>", methods=['GET'])
 def JokesId(name):
-    dad_url = "https://icanhazdadjoke.com/slack"
-    chuck_url = "https://api.chucknorris.io/jokes/random"
-
-    if name.lower() == "chuck":
-        url = chuck_url
-    elif name.lower() == "dad":
-        url = dad_url
-    else:
-        raise ValueError
-
-    r = requests.get(url)
-    r = r.json()
-
-    print(url)
-    if url == dad_url:
-        return r["attachments"][0]["text"]
-    else:
-        return r["value"]
+    url = jokesSelect(name)
+    return jokesResponse(url)

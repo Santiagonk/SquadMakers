@@ -1,8 +1,38 @@
+import requests
+import random
+import json
+
 def jokesRandom():
-    pass
+    dad_url = "https://icanhazdadjoke.com/slack"
+    chuck_url = "https://api.chucknorris.io/jokes/random"
 
-def jokesSelect():
-    pass
+    url = random.choice([dad_url, chuck_url])
 
-def jokesUtils():
-    pass
+    return url
+
+def jokesSelect(name):
+    dad_url = "https://icanhazdadjoke.com/slack"
+    chuck_url = "https://api.chucknorris.io/jokes/random"
+
+    if name.lower() == "chuck":
+        url = chuck_url
+    elif name.lower() == "dad":
+        url = dad_url
+    else:
+        raise ValueError
+
+    return url
+
+def jokesResponse(url):
+    dad_url = "https://icanhazdadjoke.com/slack"
+    chuck_url = "https://api.chucknorris.io/jokes/random"
+
+    r = requests.get(url)
+    r = r.json()
+
+    if url == dad_url:
+        r = r["attachments"][0]["text"]
+    else:
+        r =  r["value"]
+
+    return r
