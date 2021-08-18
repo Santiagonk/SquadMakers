@@ -19,20 +19,24 @@ def jokesSelect(name):
     elif name.lower() == "dad":
         url = dad_url
     else:
-        raise ValueError
+        url = "Word not found"
 
     return url
 
 def jokesResponse(url):
     dad_url = "https://icanhazdadjoke.com/slack"
     chuck_url = "https://api.chucknorris.io/jokes/random"
-
-    r = requests.get(url)
-    r = r.json()
+    try:
+        r = requests.get(url)
+        r = r.json()
+    except:
+        pass
 
     if url == dad_url:
         r = r["attachments"][0]["text"]
-    else:
+    elif url == chuck_url:
         r =  r["value"]
+    else:
+        r = url
 
     return r
